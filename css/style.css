@@ -21,3 +21,22 @@ body{
   font-family: 'Gratelos Display', 'Coolvetica', 'Roboto', sans-serif;
 }
 
+h1{
+  font-size: 3rem;
+  color: var(--firstColor);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.container{
+  display: flex;
+  border-radius: 1rem;
+  border: 1px solid var(--firstColor);
+  background-color: var(--firstColor);
+  font-size: 1.1rem;
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
+  margin: 9rem 0rem 7rem 0;
+  width: 30%;
+}
+
