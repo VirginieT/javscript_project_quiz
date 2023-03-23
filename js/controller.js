@@ -1,28 +1,31 @@
 
+let start = title = start_image = welcome = info = start_btn = quiz = progress = score = question = option = result = total_question = next_btn = end = end_image = end_score = restart = quit = null;
+
+
 var tabQuestion = [];
 var indexQuestion = 0;
 
 //after dom context was loaded
 document.addEventListener("DOMContentLoaded", () => {
-  const start = document.querySelector('.start');
-  const title = document.querySelector('.title');
-  const start_image = document.querySelector('.start_image');
-  const welcome = document.querySelector('.welcome');
-  const info = document.querySelector('.info');
-  const start_btn = document.querySelector('.start_btn');
-  const quiz = document.querySelector('.quiz');
-  const progress = document.querySelector('.progress');
-  const score = document.querySelector('.score');
-  const question = document.querySelector('.question');
-  const option = document.querySelector('.option');
-  const result = document.querySelector('.result');
-  const total_question = document.querySelector('.total_question');
-  const next_btn = document.querySelector('.next_btn');
-  const end = document.querySelector('.end');
-  const end_image = document.querySelector('.end_image');
-  const end_score = document.querySelector('.end_score');
-  const restart = document.querySelector('.restart');
-  const quit = document.querySelector('.quit');
+  start = document.querySelector('.start');
+  title = document.querySelector('.title');
+  start_image = document.querySelector('.start_image');
+  welcome = document.querySelector('.welcome');
+  info = document.querySelector('.info');
+  start_btn = document.querySelector('.start_btn');
+  quiz = document.querySelector('.quiz');
+  progress = document.querySelector('.progress');
+  score = document.querySelector('.score');
+  question = document.querySelector('.question');
+  option = document.querySelector('.option');
+  result = document.querySelector('.result');
+  total_question = document.querySelector('.total_question');
+  next_btn = document.querySelector('.next_btn');
+  end = document.querySelector('.end');
+  end_image = document.querySelector('.end_image');
+  end_score = document.querySelector('.end_score');
+  restart = document.querySelector('.restart');
+  quit = document.querySelector('.quit');
 
 
   console.log("Hello World!");
