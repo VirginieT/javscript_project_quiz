@@ -4,14 +4,35 @@ var indexQuestion = 0;
 
 //after dom context was loaded
 document.addEventListener("DOMContentLoaded", () => {
+  const start = document.querySelector('.start');
+  const title = document.querySelector('.title');
+  const start_image = document.querySelector('.start_image');
+  const welcome = document.querySelector('.welcome');
+  const info = document.querySelector('.info');
+  const start_btn = document.querySelector('.start_btn');
+  const quiz = document.querySelector('.quiz');
+  const progress = document.querySelector('.progress');
+  const score = document.querySelector('.score');
+  const question = document.querySelector('.question');
+  const option = document.querySelector('.option');
+  const result = document.querySelector('.result');
+  const total_question = document.querySelector('.total_question');
+  const next_btn = document.querySelector('.next_btn');
+  const end = document.querySelector('.end');
+  const end_image = document.querySelector('.end_image');
+  const end_score = document.querySelector('.end_score');
+  const restart = document.querySelector('.restart');
+  const quit = document.querySelector('.quit');
+
+
   console.log("Hello World!");
 
   //add start quizz button event
-  document.getElementById("start").addEventListener('click', function(){
+  start_btn.addEventListener('click', function(){
     console.log("pushed");
-    document.querySelector(".start").classList.add("hide");
-    document.querySelector(".quiz").classList.remove("hide");
-    document.querySelector(".end").classList.add("hide");
+    start.classList.add("hide");
+    quiz.classList.remove("hide");
+    end.classList.add("hide");
 
     indexQuestion = 0;
     tabQuestion = ["<p>Q1</p>","<p>Q2</p>","<p><b>Q3</b></p>","<p>Q4</p>"];//to upgrade with real question since samuel file
@@ -20,28 +41,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //add next button event
-  document.getElementById("next").addEventListener('click', function(){
+  next_btn.addEventListener('click', function(){
     console.log("pushed");
     indexQuestion ++;
     if(indexQuestion >= tabQuestion.length){
-      document.querySelector(".start").classList.add("hide");
-      document.querySelector(".quiz").classList.add("hide");
-      document.querySelector(".end").classList.remove("hide");
+      start.classList.add("hide");
+      quiz.classList.add("hide");
+      end.classList.remove("hide");
     }else{
       showQuestion();
     }
   });
 
   //add start quizz button event
-  document.getElementById("restart").addEventListener('click', function(){
+  restart.addEventListener('click', function(){
     console.log("pushed");
-    document.querySelector(".start").classList.remove("hide");
-    document.querySelector(".quiz").classList.add("hide");
-    document.querySelector(".end").classList.add("hide");
+    start.classList.remove("hide");
+    quiz.classList.add("hide");
+    end.classList.add("hide");
   });
 });
 
 function showQuestion() {
   console.log("show question "+indexQuestion);
-  document.querySelector(".question").innerHTML = tabQuestion[indexQuestion]; //to whange when samuel question are here
+  question.innerHTML = tabQuestion[indexQuestion]; //to whange when samuel question are here
 }
