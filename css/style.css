@@ -19,7 +19,19 @@
 body{
   background-color: var(--secondColor);
   font-family: 'Gratelos Display', 'Coolvetica', 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+/* START SECTION */
+
+
+
+
+
+
+/* QUIZ SECTION */
 
 h1{
   font-size: 3rem;
@@ -28,7 +40,7 @@ h1{
   margin: 1rem 0;
 }
 
-.container{
+.quiz{
   display: flex;
   border-radius: 1rem;
   border: 1px solid var(--firstColor);
@@ -39,4 +51,7 @@ h1{
   margin: 9rem 0rem 7rem 0;
   width: 30%;
 }
+
+
+/* RESULT SECTION */
 
