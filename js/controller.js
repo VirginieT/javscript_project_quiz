@@ -1,3 +1,13 @@
+//import questionR from "./questionnaire.js";
+//let modQuestionR = await import('./questionnaire.js');
+// import("./questionnaire.js").then((moduleT) => {
+//     console.log(moduleT.questionR);
+// });
+// import {keyValue} from './questionnaire.js';
+// console.log(keyValue);
+
+// let module = await import('./questionnaire.js');
+// console.log(module.keyValue)
 
 let start = title = start_image = welcome = info = start_btn = quiz = progress = score = question = option = result = total_question = next_btn = end = end_image = end_score = restart = quit = null;
 
@@ -29,6 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   console.log("Hello World!");
+  //console.log(JSON.stringify(modQuestionR.questionR));
+  console.log(questionR);
 
   //add start quizz button event
   start_btn.addEventListener('click', function(){
@@ -38,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
     end.classList.add("hide");
 
     indexQuestion = 0;
-    tabQuestion = ["<p>Q1</p>","<p>Q2</p>","<p><b>Q3</b></p>","<p>Q4</p>"];//to upgrade with real question since samuel file
+    // tabQuestion = ["<p>Q1</p>","<p>Q2</p>","<p><b>Q3</b></p>","<p>Q4</p>"];//to upgrade with real question since samuel file
+    tabQuestion = [questionR[2], questionR[14], questionR[8],questionR[19]]
 
     showQuestion();
   });
@@ -67,5 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function showQuestion() {
   console.log("show question "+indexQuestion);
-  question.innerHTML = tabQuestion[indexQuestion]; //to whange when samuel question are here
+  question.innerHTML = tabQuestion[indexQuestion].contenuHTML(); //to whange when samuel question are here
 }

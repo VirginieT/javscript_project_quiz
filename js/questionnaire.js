@@ -1,5 +1,4 @@
-// Déclaration des questions 
-
+// Déclaration des questions
 var questionR = [new QuestionRadio("Que signifie le sigle ISTQB ?",
                                     [new Reponse("", false),
                                     new Reponse("", false),
