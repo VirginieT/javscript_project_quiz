@@ -24,20 +24,24 @@ body{
 
 /* START SECTION */
 .start{
-  background-color: var(--firstColor);
-  font-size: 1.1rem;
-  padding: 1.5rem;
-  margin: 9rem 0rem 9rem 0;
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  padding: 1.5rem;
+  margin: 9rem 0rem 9rem 0;
+  width: 50%;
+  font-size: 1.1rem;
+  border-radius: 0.3rem;
+  border: 2px solid var(--firstColor);
+
 }
-h1{
+.title{
   font-size: 3rem;
-  color: var(--fifthColor);
+  color: var(--fourthColor);
+  margin-bottom: 1rem;
 }
+
 
 
 
