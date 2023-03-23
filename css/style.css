@@ -55,7 +55,7 @@ body{
   margin: 10%;
   padding-bottom: 1rem;
 }
-#start{
+.start_btn{
   /* margin: 0 auto;
   padding: 1rem;
   background-color: var(--firstColor);
@@ -86,7 +86,7 @@ body{
 	-ms-transition: all 0.3s;
 	transition: all 0.3s;
 }
-#start:hover{
+.start_btn:hover{
   background-color:white;
   color: var(--thirdColor);
 }

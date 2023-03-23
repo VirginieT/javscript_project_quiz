@@ -5,7 +5,7 @@ class Reponse {
   }
 
   contenuHTML(){
-    return "<p>Intitule de la reponse</p>"
+    return "<p>"+this.s_intitule+"</p>"
   }
 }
 
@@ -24,13 +24,21 @@ class Question {
     for(var i=0;i<this.tab_tableReponse.length;i++){
       ret = ret + this.tab_tableReponse[i].contenuHTML() + "<br>"
     }
-    return "<p>Intitule de la question</p>"+ret;
+    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
   }
 }
 
 class QuestionCheck extends Question {
   constructor(s_intitule, tab_tableReponse) {
     super(s_intitule, tab_tableReponse);
+  }
+
+  contenuHTML(){
+    var ret = "";
+    for(var i=0;i<this.tab_tableReponse.length;i++){
+      ret = ret +"<input type='checkbox'>" + this.tab_tableReponse[i].contenuHTML() + "</input><br>"
+    }
+    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
   }
 }
 
@@ -42,9 +50,9 @@ class QuestionRadio extends Question {
   contenuHTML(){
     var ret = "";
     for(var i=0;i<this.tab_tableReponse.length;i++){
-      ret = ret +"<input type='radio'>" + this.tab_tableReponse[i].contenuHTML() + "</input><br>"
+      ret = ret +"<input type='radio' name='radioGroup'>" + this.tab_tableReponse[i].contenuHTML() + "</input><br>"
     }
-    return "<p>Intitule de la question</p>"+ret;
+    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
   }
 }
 

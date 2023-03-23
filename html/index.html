@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/assets/idea.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/idea.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <script type="text/javascript" src="../js/model.js"></script>
+    <script type="text/javascript" src="../js/questionnaire.js"></script>
     <script type="text/javascript" src="../js/controller.js"></script>
     <title>Let's quiz!</title>
 </head>
@@ -18,11 +19,8 @@
         <div class="info">Selon les questions, il y aura une ou plusieurs bonnes réponses.</div>
         <div class="info">À la fin du quiz vous pourrez recommencer, de nouvelles questions seront proposées aléatoirement.</div>
         <div class="info">Bonne chance !</div>
-        <div class="start_image"><img alt="" src="https://media.giphy.com/media/QJvwBSGaoc4eI/giphy.gif" /></div>
-        <div class="start_btn">
-            <button id="start">Lancer le Quiz !</button>
-            <div class="ease"> </div>
-        </div>
+        <div><img class="start_image" alt="" src="https://media.giphy.com/media/QJvwBSGaoc4eI/giphy.gif" /></div>
+        <div><button class="start_btn">Lancer le Quiz !</button></div>
     </div>
 
     <div class="quiz hide">
@@ -39,16 +37,16 @@
 
         <footer>
             <div class="total_question"></div>
-            <div class="next_btn"><button id="next">Next</button></div>
+            <div><button class="next_btn">Next</button></div>
         </footer>
     </div>
 
     <div class="end hide">
         <div class="end_image"></div>
         <div class="end_score"></div>
-        <div class="end_btn">
-            <button id="restart">Restart</button>
-            <button id="quit">Quit Quiz</button>
+        <div>
+            <button class="restart">Restart</button>
+            <button class="quit">Quit Quiz</button>
         </div>
     </div>
 </body>
