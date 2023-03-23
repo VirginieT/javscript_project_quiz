@@ -7,8 +7,17 @@
 }
 
 *{
-  font-family: 'Gratelos Display', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   }
+
+  html, body{
+    height: 100%;
+}
+
+body{
+  background-color: var(--secondColor);
+  font-family: 'Gratelos Display', 'Coolvetica', 'Roboto', sans-serif;
+}
+
