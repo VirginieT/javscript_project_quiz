@@ -29,18 +29,84 @@ body{
   align-items: flex-start;
   justify-content: center;
   padding: 1.5rem;
-  margin: 9rem 0rem 9rem 0;
+  margin: 8rem 0rem 8rem 0;
   width: 50%;
   font-size: 1.1rem;
   border-radius: 0.3rem;
   border: 2px solid var(--firstColor);
-
 }
+
 .title{
   font-size: 3rem;
   color: var(--fourthColor);
-  margin-bottom: 1rem;
+  margin: 0 auto;
+  padding-bottom: 1.5rem;
 }
+.welcome{
+  font-size: 1.3rem;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+.info{
+  font-size: 1.1rem;
+  padding-bottom: 1rem;
+}
+.start_image{
+  margin: 10%;
+  padding-bottom: 1rem;
+}
+#start{
+  /* margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--firstColor);
+  border-radius: 0.3rem;
+  border: 2px solid var(--secondColor);
+  font-size: 1.1rem;
+  color: var(--secondColor);
+  font-weight: bold;
+  cursor: pointer; */
+  float:left;
+	width: 100%;
+	max-width:500px;
+	border: white solid 4px;
+	cursor: pointer;
+	background-color: #0493bd;
+	margin-top: -4px;
+	color: white;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	letter-spacing: .1em;
+	padding-top: 22px;
+	padding-bottom: 22px;
+	font-weight: 500;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	transition: all 0.3s;
+}
+#start:hover{
+  background-color:white;
+  color: var(--thirdColor);
+}
+.ease {
+	width: 0px;
+	height: 70px;
+	background-color: white;
+	-webkit-transition: .3s ease;
+	-moz-transition: .3s ease;
+	-o-transition: .3s ease;
+	-ms-transition: .3s ease;
+	transition: .3s ease;
+}
+#hover .ease{
+	width: 100%;
+	max-width: 500px;
+	background-color: white;
+	border: 0;
+}
+
 
 
 
@@ -55,7 +121,7 @@ body{
   font-size: 1.1rem;
   box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
-  margin: 9rem 0rem 9rem 0;
+  margin: 8rem 0rem 8rem 0;
   width: 50%;
 }
 
@@ -70,7 +136,7 @@ body{
   font-size: 1.1rem;
   box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
-  margin: 9rem 0rem 9rem 0;
+  margin: 8rem 0rem 8rem 0;
   width: 50%;
 }
 
