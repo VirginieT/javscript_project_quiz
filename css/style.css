@@ -1,3 +1,14 @@
-*{
-  font-family: 'Roboto', sans-serif;
+:root{
+  --firstColor: #DCE4F2;
+  --secondColor: #0487D9;
+  --thirdColor: #0477BF;
+  --fourthColor: #A0D3F2;
+  --fifthColor: #049DD9;
 }
+
+*{
+  font-family: 'Gratelos Display', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
