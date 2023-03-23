@@ -1,0 +1,123 @@
+// Déclaration des questions 
+
+var questionR = [new QuestionRadio("Que signifie le sigle ISTQB ?",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("International Software Testing Qualifications Board", true),
+                                    new Reponse("", false)]
+                                    ),
+                new QuestionRadio("Quelle est la définition selon l’ISTQB du test ?",
+                        [new Reponse("", false),
+                        new Reponse("un moyen d'évaluer la qualité du logiciel", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("A quoi correspond la qualité du point de vue d’un testeur ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Comment évaluer la fin d’un test ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Quelle est la fourchette de salaire d’un testeur novice ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Combien de types de tests existe-t’il dans le syllabus ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Quels sont les qualités d’un testeur ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Quel est la différence entre une erreur et un défaut ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Que teste-t’on toujours avant toute chose ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Est-il possible de tester à 100% ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Quel test permet de vérifier qu’une fonctionnalité est utilisable par tous ?",
+                        [new Reponse("", false),
+                        new Reponse("réponse", true),
+                        new Reponse("", false),
+                        new Reponse("", false)]
+                        ),
+                new QuestionRadio("Combien de niveaux de certification existe-t’il ?",
+                        [new Reponse("2", false),
+                        new Reponse("5", false),
+                        new Reponse("8", false),
+                        new Reponse("3", false)]
+                        ),
+                new QuestionCheck("Quels sont les différents niveaux de testeurs ?",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("", true),
+                                    new Reponse("", false)]
+                                    ),
+                new QuestionCheck("Quels outils un testeur doit-il connaitre ? ",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("", true),
+                                    new Reponse("", false)]
+                                    ),
+                new QuestionCheck("Quel est l’intérêt de mener une stratégie de test lors d’un projet ?",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("", true),
+                                    new Reponse("", false)]
+                                    ),
+                new QuestionCheck("Est-ce que gouter une pomme peut-être considéré comme un test ?",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("", true),
+                                    new Reponse("", false)]
+                                    ),
+                new QuestionCheck("Quels tests sont de type tests dynamiques ?",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("", true),
+                                    new Reponse("", false)]
+                                    ),
+                new QuestionCheck("Quels tests sont de type tests statiques ?",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("", true),
+                                    new Reponse("", false)]
+                                    ),
+                new QuestionCheck("Quel est le nom du test qui se réalise en inspectant le code ?",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("un test 'boîte blanche'", true),
+                                    new Reponse("", false)]
+                                    ),
+                new QuestionCheck("BONUS : Etes-vous un champion ?",
+                                    [new Reponse("", false),
+                                    new Reponse("", false),
+                                    new Reponse("", true),
+                                    new Reponse("", false)]
+                                    ),
+]
