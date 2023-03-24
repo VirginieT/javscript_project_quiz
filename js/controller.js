@@ -1,19 +1,6 @@
-//import questionR from "./questionnaire.js";
-//let modQuestionR = await import('./questionnaire.js');
-// import("./questionnaire.js").then((moduleT) => {
-//     console.log(moduleT.questionR);
-// });
-// import {keyValue} from './questionnaire.js';
-// console.log(keyValue);
-
-// let module = await import('./questionnaire.js');
-// console.log(module.keyValue)
-
 let start = title = start_image = welcome = info = start_btn = quiz = progress = score = question = option = result = total_question = next_btn = end = end_image = end_score = restart = quit = null;
 
-
-var tabQuestion = [];
-var indexQuestion = 0;
+var questionnaire = null;
 
 //after dom context was loaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,12 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
   info = document.querySelector('.info');
   start_btn = document.querySelector('.start_btn');
   quiz = document.querySelector('.quiz');
-  progress = document.querySelector('.progress');
   score = document.querySelector('.score');
   question = document.querySelector('.question');
   option = document.querySelector('.option');
   result = document.querySelector('.result');
-  total_question = document.querySelector('.total_question');
+  progress = document.querySelector('.progress');
+  validate_btn = document.querySelector('.validate_btn');
   next_btn = document.querySelector('.next_btn');
   end = document.querySelector('.end');
   end_image = document.querySelector('.end_image');
@@ -39,8 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   console.log("Hello World!");
-  //console.log(JSON.stringify(modQuestionR.questionR));
-  console.log(questionR);
+  console.log(questionR.length);
 
   //add start quizz button event
   start_btn.addEventListener('click', function(){
@@ -49,23 +35,31 @@ document.addEventListener("DOMContentLoaded", () => {
     quiz.classList.remove("hide");
     end.classList.add("hide");
 
-    indexQuestion = 0;
-    // tabQuestion = ["<p>Q1</p>","<p>Q2</p>","<p><b>Q3</b></p>","<p>Q4</p>"];//to upgrade with real question since samuel file
-    tabQuestion = [questionR[2], questionR[14], questionR[8],questionR[19]]
-
-    showQuestion();
+    questionnaire = new Questionnaire(questionR, 4);
+    showNext();
   });
 
   //add next button event
   next_btn.addEventListener('click', function(){
-    console.log("pushed");
-    indexQuestion ++;
-    if(indexQuestion >= tabQuestion.length){
-      start.classList.add("hide");
-      quiz.classList.add("hide");
-      end.classList.remove("hide");
+    console.log("button pushed, mode answered = "+questionnaire.isAnswered());
+
+    if(questionnaire.isAnswered()){
+      //affiche la question suivante
+      questionnaire.indexQuestion ++;
+      if(questionnaire.indexQuestion >= questionnaire.size()){
+        //affiche la fin si c'est fini
+        start.classList.add("hide");
+        quiz.classList.add("hide");
+        end.classList.remove("hide");
+      }else{
+        showNext()
+      }
     }else{
-      showQuestion();
+      //mémorise la réponse et affiche la correction de la question
+
+      //TODO change index reponse
+      questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
+      question.innerHTML = questionnaire.contenuHTML();
     }
   });
 
@@ -78,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function showQuestion() {
-  console.log("show question "+indexQuestion);
-  question.innerHTML = tabQuestion[indexQuestion].contenuHTML(); //to whange when samuel question are here
+function showNext(){
+  //remove all valid and invalid class to hide result
+  question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
 }

@@ -116,7 +116,7 @@ body{
 	-ms-transition: .3s ease;
 	transition: .3s ease;
 }
-#hover .ease{
+.btn_container:hover .ease{
 	width: 100%;
 	max-width: 500px;
 	background-color: white;
@@ -125,21 +125,90 @@ body{
 
 
 
-
-
-
 /* QUIZ SECTION */
 .quiz{
   display: flex;
-  border-radius: 1rem;
+  flex-direction: column;
+  border-radius: 0.3rem;
   border: 1px solid var(--firstColor);
   background-color: var(--firstColor);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
-  padding: 1.5rem;
+  padding: 0.7rem 1.8rem 0.7rem 1.8rem;
   margin: 8rem 0rem 8rem 0;
   width: 50%;
 }
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--secondColor);
+}
+.score{
+  width: 20%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--fourthColor);
+  margin-left: auto;
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+}
+.question{
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.options{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: 2px solid var(--secondColor);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.options.valid {
+  border: 2.1px solid rgba(8, 179, 122, 0.986);
+}
+.options.invalid {
+  border: 2.1px solid rgba(238, 32, 17, 0.973);
+}
+
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--secondColor);
+}
+.progress{
+  width: 20%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--fourthColor);
+}
+.next_btn{
+  width: 20%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--fourthColor);
+  margin-right: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
 
 
 
