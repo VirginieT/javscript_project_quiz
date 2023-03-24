@@ -39,7 +39,7 @@ class Question {
     for(var i=0;i<this.tab_tableReponse.length;i++){
       ret = ret + "<div class='options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'>" + this.tab_tableReponse[i].contenuHTML() + "</div><br>"
     }
-    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
+    return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
 
   clone(){
@@ -61,7 +61,7 @@ class QuestionCheck extends Question {
     for(var i=0;i<this.tab_tableReponse.length;i++){
       ret = ret +"<div class=' options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'><input type='checkbox'>" + this.tab_tableReponse[i].contenuHTML() + "</input></div><br>"
     }
-    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
+    return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
 
   clone(){
