@@ -100,7 +100,7 @@ body{
 	-ms-transition: .3s ease;
 	transition: .3s ease;
 }
-#hover .ease{
+.btn_container:hover .ease{
 	width: 100%;
 	max-width: 500px;
 	background-color: white;
@@ -109,21 +109,63 @@ body{
 
 
 
-
-
-
 /* QUIZ SECTION */
 .quiz{
   display: flex;
-  border-radius: 1rem;
+  flex-direction: column;
+  border-radius: 0.3rem;
   border: 1px solid var(--firstColor);
   background-color: var(--firstColor);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
   margin: 8rem 0rem 8rem 0;
   width: 50%;
 }
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--secondColor);
+}
+.score{
+  width: 20%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--fourthColor);
+  margin-left: auto;
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+}
+.question{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--secondColor);
+}
+.progress{
+  width: 20%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--fourthColor);
+}
+
+
 
 
 
