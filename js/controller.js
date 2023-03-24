@@ -101,6 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
         start.classList.add("hide");
         quiz.classList.add("hide");
         end.classList.remove("hide");
+
+        document.querySelector('.end_info').innerHTML = "Félicitations! Tu as terminé le quiz ! Ton score final est "+questionnaire.score+" bonnes réponses";
       }else{
         showNext();
       }
@@ -128,7 +130,7 @@ function showNext(){
   question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
   document.querySelector('.progress').innerHTML = questionnaire.indexQuestion+" / "+questionnaire.nbQuestion+" questions";
   document.querySelector('.score').innerHTML = "score : "+questionnaire.score;
-  
+
   //enable dir evt
   var divs = document.getElementsByClassName("options")
   for(var i=0;i<divs.length;i++){
