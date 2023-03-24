@@ -85,8 +85,21 @@ class QuestionRadio extends Question {
 }
 
 class Questionnaire {
-  constructor(tab_questions) {
-    this.tab_questions = tab_questions;
+  constructor(questionR) {
+    this.tab_questions = [];
+    this.indexQuestion = 0;
+
+    var tab2 = [];
+    for(var i=0;i<questionR.length;i++){
+      tab2.push(questionR[i].clone());
+    }
+    console.log("--tab2--"+JSON.stringify(tab2))
+
+    for(var i=0;i<4;i++){
+      var randNum = Math.floor(Math.random()*tab2.length);
+      this.tab_questions[this.tab_questions.length] = tab2[randNum];
+      tab2.splice(randNum,1);
+    }
   }
 
   addQuestion(question){
@@ -94,11 +107,11 @@ class Questionnaire {
   }
 
   contenuHTML(){
-    var ret = "";
-    for(var i=0;i<this.tab_questions.length;i++){
-      ret = ret + this.tab_questions[i].contenuHTML() + "<br>"
-    }
-    return "<p>Questionnaire : </p>"+ret;
+    return this.tab_questions[this.indexQuestion].contenuHTML();
+  }
+
+  size(){
+    return this.tab_questions.length;
   }
 }
 
