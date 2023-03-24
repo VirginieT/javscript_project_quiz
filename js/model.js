@@ -160,7 +160,29 @@ class Questionnaire {
 
     return ret;
   }
-}
+
+  currentValidReponse(){
+    var ret = [];
+    for(var i=0;i<this.currentQuestion().tab_tableReponse.length;i++){
+      if(this.currentQuestion().tab_tableReponse[i].b_valide == true){
+        ret.push(this.currentQuestion().tab_tableReponse[i]);
+      }
+    }
+
+    return ret;
+  }
+
+  currentSaisieUtilisateur(){
+    var ret = [];
+    for(var i=0;i<this.tab_saisiesUtilisateur.length;i++){
+      if(this.tab_saisiesUtilisateur[i].o_question == this.currentQuestion()){
+        ret.push(this.tab_saisiesUtilisateur[i].o_reponseSelected);
+      }
+    }
+
+    return ret;
+  }
+} 
 
 
 //to test

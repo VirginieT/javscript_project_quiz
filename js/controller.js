@@ -67,7 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
             questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
           }
         }
-        console.log(JSON.stringify(questionnaire.tab_saisiesUtilisateur))
+        if (compareReponse(questionnaire.currentValidReponse(), questionnaire.reponsesUtilisateur())){
+          console.log('if')
+          score ++
+        }
+        //console.log(JSON.stringify(questionnaire.tab_saisiesUtilisateur))
+
       }else{
         questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1), i));
       }
@@ -82,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       validate_btn.classList.add("hide");
       next_btn.classList.remove("hide");
     }
-    console.log(score)
+    console.log("score = " + score)
   });
 
 
@@ -155,4 +160,16 @@ function eventDivClicked(evt){
     divInput = evt.target;
     divInput.previousSibling.toggleAttribute("checked");
   }
+}
+
+function compareReponse(ent1, ent2){
+  if (ent1.length != ent2.length){
+    return false
+  } 
+  for (i=0; i < ent1.length; i++){
+      if (ent1[i].s_intule != ent2[i].s_intule){
+        return false
+    } 
+  }
+  return true
 }
