@@ -12,7 +12,6 @@
   box-sizing: border-box;
   }
 
-
 body{
   background-color: var(--secondColor);
   font-family: 'Gratelos Display', 'Coolvetica', 'Roboto', sans-serif;
@@ -20,7 +19,6 @@ body{
   align-items: center;
   flex-direction: column;
 }
-
 
 /* START SECTION */
 .start{
@@ -40,13 +38,6 @@ body{
   color: var(--fourthColor);
   margin: 0 auto;
   padding-bottom: 1.5rem;
-}
-
-@media (max-width: 500px) {
-  .title{
-    font-size: 2rem;
-    text-align: center;
-  }
 }
 
 .welcome{
@@ -69,21 +60,12 @@ body{
 	margin-right: auto;
 }
 .start_btn{
-  /* margin: 0 auto;
-  padding: 1rem;
-  background-color: var(--firstColor);
-  border-radius: 0.3rem;
-  border: 2px solid var(--secondColor);
-  font-size: 1.1rem;
-  color: var(--secondColor);
-  font-weight: bold;
-  cursor: pointer; */
   float:left;
 	width: 100%;
 	max-width:500px;
 	border: white solid 4px;
 	cursor: pointer;
-	background-color: #0493bd;
+	background-color: var(--fifthColor);
 	margin-top: -4px;
 	color: white;
 	text-transform: uppercase;
@@ -106,23 +88,6 @@ body{
   background-color:white;
   color: var(--thirdColor);
 }
-.ease {
-	width: 0px;
-	height: 70px;
-	background-color: white;
-	-webkit-transition: .3s ease;
-	-moz-transition: .3s ease;
-	-o-transition: .3s ease;
-	-ms-transition: .3s ease;
-	transition: .3s ease;
-}
-.btn_container:hover .ease{
-	width: 100%;
-	max-width: 500px;
-	background-color: white;
-	border: 0;
-}
-
 
 
 /* QUIZ SECTION */
@@ -153,6 +118,8 @@ header{
   padding: 0.5rem;
   background-color: var(--fourthColor);
   margin-left: auto;
+  font-size:1rem;
+  text-align: center;
 }
 
 .section{
@@ -161,19 +128,23 @@ header{
 }
 .question{
   font-size: 1.3rem;
-  margin-bottom: 1rem;
   font-weight: bold;
 }
 
-.options{
+div.options{
   display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.options{
+  margin-bottom: 0.5rem;
+  padding: 0.7rem;
   border-radius: 0.3rem;
   border: 2px solid var(--secondColor);
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: normal;
 }
 .options.valid {
   border: 2.1px solid rgba(8, 179, 122, 0.986);
@@ -181,13 +152,18 @@ header{
 .options.invalid {
   border: 2.1px solid rgba(238, 32, 17, 0.973);
 }
+input[type="radio"]{
+  margin-right: 0.5rem;
+}
+input[type="checkbox"]{
+  margin-right: 0.5rem;
+}
 
 
 footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
   padding-top: 0.7rem;
   border-top: 1px solid var(--secondColor);
 }
@@ -195,7 +171,9 @@ footer{
   width: 20%;
   border-radius: 5px;
   padding: 0.5rem;
-  background-color: var(--fourthColor);
+  font-size:1.2rem;
+  text-align: center;
+
 }
 input[type="radio"], .options {
   display: inline-block;
@@ -203,27 +181,47 @@ input[type="radio"], .options {
 .options {
   display: block;
 }
-.validate_btn{
-  width: 20%;
+button.validate_btn{
+  width: 100%;
   border-radius: 5px;
-  padding: 0.5rem;
-  background-color: var(--fourthColor);
+  border: 2px solid var(--fifthColor);
+  background-color: var(--fifthColor);
   margin-left: auto;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.next_btn{
-  width: 20%;
-  border-radius: 5px;
   padding: 0.5rem;
-  background-color: var(--fourthColor);
-  margin-right: auto;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
+  text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	letter-spacing: .1em;
+  font-weight: bold;
+  color: white;
+}
+button.validate_btn:hover{
+  background-color: var(--firstColor);
+  color: var(--fifthColor);
 }
 
-
-
+button.next_btn{
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid var(--fifthColor);
+  background-color: var(--fifthColor);
+  margin-left: auto;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	letter-spacing: .1em;
+  font-weight: bold;
+  color: white;
+}
+button.next_btn:hover{
+  background-color: var(--firstColor);
+  color: var(--fifthColor);
+}
 
 
 /* END SECTION */
@@ -241,4 +239,26 @@ input[type="radio"], .options {
 
 .hide {
   display:none;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 500px) {
+  .title{
+    font-size: 2rem;
+    text-align: center;
+  }
+  .score{
+    font-size: 0.5rem;
+  }
+  .progress{
+    font-size: 0.5rem;
+  }
+}
+@media (max-width: 800px) {
+  .score{
+    font-size: 0.6rem;
+  }
+  .progress{
+    font-size: 0.6rem;
+  }
 }
