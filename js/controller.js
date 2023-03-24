@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function showNext(){
   //remove all valid and invalid class to hide result
   question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
+  document.querySelector('.progress').innerHTML = questionnaire.indexQuestion+"/"+questionnaire.nbQuestion;
 
   //enable dir evt
   var divs = document.getElementsByClassName("options")
