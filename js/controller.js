@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
     showNext();
   });
 
+  // initialize score variable and score
+  var scoreMax = questionnaire.nbQuestion
+  var score = 0
+
+
   //add next button event
   next_btn.addEventListener('click', function(){
     console.log("button pushed, mode answered = "+questionnaire.isAnswered());
