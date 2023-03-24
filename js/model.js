@@ -5,11 +5,22 @@ class Reponse {
   }
 
   contenuHTML(){
-    return "<p>"+this.s_intitule+"</p>"
+    return "<div class='options'>"+this.s_intitule+"</div>"
   }
 
   clone(){
     return new Reponse(this.s_intitule, this.b_valide)
+  }
+}
+
+class SaisieUtilisateur {
+  constructor(o_question, o_reponseSelected) {
+    this.o_question = o_question;
+    this.o_reponseSelected = o_reponseSelected;
+  }
+
+  contenuHTML(){
+    return "<p>Question : "+o_question.s_intitule+" réponse : "+o_reponseSelected.s_intitule+"</p>"
   }
 }
 
@@ -87,6 +98,7 @@ class QuestionRadio extends Question {
 class Questionnaire {
   constructor(questionR, nbQuestion) {
     this.tab_questions = [];
+    this.tab_saisiesUtilisateur = []
     this.indexQuestion = 0;
     this.nbQuestion = nbQuestion;
 
@@ -107,8 +119,20 @@ class Questionnaire {
     this.tab_questions.append(question);
   }
 
+  currentQuestion(){
+    return this.tab_questions[this.indexQuestion];
+  }
+
+  currentReponse(index){
+    return this.currentQuestion().tab_tableReponse[index];
+  }
+
+  isAnswered(){
+    return this.indexQuestion == this.tab_saisiesUtilisateur.length - 1;
+  }
+
   contenuHTML(){
-    return this.tab_questions[this.indexQuestion].contenuHTML();
+    return this.currentQuestion().contenuHTML();
   }
 
   size(){
@@ -126,6 +150,3 @@ var tabRep = [new Reponse("1",true), new Reponse("2",false)];
 var questionRadio = new QuestionRadio("La Radio est-elle utile ?", tabRep);
 
 var questionnaire = new Questionnaire([questionCheck, questionRadio]);
-
-console.log("questionnaire = "+JSON.stringify(questionnaire))
-console.log("contenu = "+questionnaire.contenuHTML())

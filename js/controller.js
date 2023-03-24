@@ -41,14 +41,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //add next button event
   next_btn.addEventListener('click', function(){
-    console.log("pushed");
-    questionnaire.indexQuestion ++;
-    if(questionnaire.indexQuestion >= questionnaire.size()){
-      start.classList.add("hide");
-      quiz.classList.add("hide");
-      end.classList.remove("hide");
+    console.log("button pushed, mode answered = "+questionnaire.isAnswered());
+
+    if(questionnaire.isAnswered()){
+      //affiche la question suivante
+      questionnaire.indexQuestion ++;
+      if(questionnaire.indexQuestion >= questionnaire.size()){
+        //affiche la fin si c'est fini
+        start.classList.add("hide");
+        quiz.classList.add("hide");
+        end.classList.remove("hide");
+      }else{
+        question.innerHTML = questionnaire.contenuHTML()
+      }
     }else{
-      question.innerHTML = questionnaire.contenuHTML()
+      //mémorise la réponse et affiche la correction de la question
+
+      //TODO change index reponse
+      questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
+      question.innerHTML = questionnaire.contenuHTML();
     }
   });
 
