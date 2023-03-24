@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var radios = document.getElementsByTagName('input');
         for (var i = 0; i < radios.length; i++) {
             if (radios[i].type === 'radio' && radios[i].checked) {
-              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
+              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
               if (questionnaire.currentReponse(i).b_valide === true) {
                 score++
               }
@@ -63,19 +63,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }else if(questionnaire.currentQuestion() instanceof QuestionCheck){
         var radios = document.getElementsByTagName('input');
         for (var i = 0; i < radios.length; i++) {
-            if (radios[i].type === 'checkbox' && radios[i].checked) {
-              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
-            }
+          if (radios[i].type === 'checkbox' && radios[i].checked) {
+            questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
+          }
         }
         console.log(JSON.stringify(questionnaire.tab_saisiesUtilisateur))
       }else{
-        questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
+        questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1), i));
       }
 
       console.log(JSON.stringify(questionnaire.reponsesUtilisateur()))
 
       questionnaire.indexQuestionsRepondues++;
       question.innerHTML = questionnaire.contenuHTML();
+
+      disableInput(questionnaire.currentReponseIdUtilisateur());
+
       validate_btn.classList.add("hide");
       next_btn.classList.remove("hide");
     }
@@ -91,13 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if(!questionnaire.isAnswered()){
       //affiche la question suivante
       questionnaire.indexQuestion ++;
+
       if(questionnaire.indexQuestion >= questionnaire.size()){
         //affiche la fin si c'est fini
         start.classList.add("hide");
         quiz.classList.add("hide");
         end.classList.remove("hide");
       }else{
-        showNext()
+        showNext();
       }
       validate_btn.classList.remove("hide");
       next_btn.classList.add("hide");
@@ -111,9 +115,44 @@ document.addEventListener("DOMContentLoaded", () => {
     quiz.classList.add("hide");
     end.classList.add("hide");
   });
+
+  //add start quizz button event
+  quit.addEventListener('click', function(){
+    window.close()
+  });
 });
 
 function showNext(){
   //remove all valid and invalid class to hide result
   question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
+  document.querySelector('.progress').innerHTML = questionnaire.indexQuestion+"/"+questionnaire.nbQuestion;
+
+  //enable dir evt
+  var divs = document.getElementsByClassName("options")
+  for(var i=0;i<divs.length;i++){
+    divs[i].addEventListener('click', eventDivClicked);
+  }
+}
+
+function disableInput(reponsesId){
+  var radios = document.getElementsByTagName('input');
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].setAttribute('disabled', '');
+  }
+  for (var i = 0; i < reponsesId.length; i++) {
+    radios[reponsesId[i]].setAttribute('checked', '');
+  }
+}
+
+function eventDivClicked(evt){
+  //TODO recup fils input et toogle le checked
+  divInput = evt.target.getElementsByTagName('input');
+  if(divInput.length >= 1){
+    //input found
+    divInput[0].toggleAttribute("checked");
+  }else{
+    //on text -> want brother
+    divInput = evt.target;
+    divInput.previousSibling.toggleAttribute("checked");
+  }
 }

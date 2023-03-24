@@ -14,9 +14,10 @@ class Reponse {
 }
 
 class SaisieUtilisateur {
-  constructor(o_question, o_reponseSelected) {
+  constructor(o_question, o_reponseSelected, i_id) {
     this.o_question = o_question;
     this.o_reponseSelected = o_reponseSelected;
+    this.i_id = i_id;
   }
 
   contenuHTML(){
@@ -144,6 +145,17 @@ class Questionnaire {
     var ret = [];
     for(var i=0;i<this.tab_saisiesUtilisateur.length;i++){
       ret.push(this.tab_saisiesUtilisateur[i].o_reponseSelected);
+    }
+
+    return ret;
+  }
+
+  currentReponseIdUtilisateur(){
+    var ret = [];
+    for(var i=0;i<this.tab_saisiesUtilisateur.length;i++){
+      if(this.tab_saisiesUtilisateur[i].o_question == this.currentQuestion()){
+        ret.push(this.tab_saisiesUtilisateur[i].i_id);
+      }
     }
 
     return ret;
