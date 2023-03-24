@@ -49,25 +49,28 @@ document.addEventListener("DOMContentLoaded", () => {
       if(questionnaire.currentQuestion() instanceof QuestionRadio){
         var radios = document.getElementsByTagName('input');
         for (var i = 0; i < radios.length; i++) {
-            if (radios[i].type === 'radio' && radios[i].checked) {
-              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
-            }
+          if (radios[i].type === 'radio' && radios[i].checked) {
+            questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
+          }
         }
       }else if(questionnaire.currentQuestion() instanceof QuestionCheck){
         var radios = document.getElementsByTagName('input');
         for (var i = 0; i < radios.length; i++) {
-            if (radios[i].type === 'checkbox' && radios[i].checked) {
-              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
-            }
+          if (radios[i].type === 'checkbox' && radios[i].checked) {
+            questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
+          }
         }
       }else{
-        questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
+        questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1), i));
       }
 
       console.log(JSON.stringify(questionnaire.reponsesUtilisateur()))
 
       questionnaire.indexQuestionsRepondues++;
       question.innerHTML = questionnaire.contenuHTML();
+
+      disableInput(questionnaire.currentReponseIdUtilisateur());
+
       validate_btn.classList.add("hide");
       next_btn.classList.remove("hide");
     }
@@ -80,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(!questionnaire.isAnswered()){
       //affiche la question suivante
       questionnaire.indexQuestion ++;
+
       if(questionnaire.indexQuestion >= questionnaire.size()){
         //affiche la fin si c'est fini
         start.classList.add("hide");
@@ -105,4 +109,14 @@ document.addEventListener("DOMContentLoaded", () => {
 function showNext(){
   //remove all valid and invalid class to hide result
   question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
+}
+
+function disableInput(reponsesId){
+  var radios = document.getElementsByTagName('input');
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].setAttribute('disabled', '');
+  }
+  for (var i = 0; i < reponsesId.length; i++) {
+    radios[reponsesId[i]].setAttribute('checked', '');
+  }
 }
