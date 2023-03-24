@@ -55,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
         for (var i = 0; i < radios.length; i++) {
             if (radios[i].type === 'radio' && radios[i].checked) {
               questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
+              if (questionnaire.currentReponse(i).b_valide === true) {
+                score++
+              }
             }
         }
       }else if(questionnaire.currentQuestion() instanceof QuestionCheck){
@@ -64,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
               questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
             }
         }
+        console.log(JSON.stringify(questionnaire.tab_saisiesUtilisateur))
       }else{
         questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
       }
@@ -75,7 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
       validate_btn.classList.add("hide");
       next_btn.classList.remove("hide");
     }
+    console.log(score)
   });
+
+
 
   //add next button event
   next_btn.addEventListener('click', function(){
