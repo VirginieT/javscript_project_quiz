@@ -5,7 +5,7 @@ class Reponse {
   }
 
   contenuHTML(){
-    return "<div class='options "+(this.b_valide ? "valid" : "invalid")+"'>"+this.s_intitule+"</div>"
+    return "<div class='options'>"+this.s_intitule+"</div>"
   }
 
   clone(){
@@ -39,7 +39,7 @@ class Question {
     for(var i=0;i<this.tab_tableReponse.length;i++){
       ret = ret + this.tab_tableReponse[i].contenuHTML() + "<br>"
     }
-    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
+    return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
 
   clone(){
@@ -61,7 +61,7 @@ class QuestionCheck extends Question {
     for(var i=0;i<this.tab_tableReponse.length;i++){
       ret = ret +"<input type='checkbox'>" + this.tab_tableReponse[i].contenuHTML() + "</input><br>"
     }
-    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
+    return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
 
   clone(){
