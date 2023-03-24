@@ -5,7 +5,7 @@ class Reponse {
   }
 
   contenuHTML(){
-    return "<div class='options'>"+this.s_intitule+"</div>"
+    return "<div>"+this.s_intitule+"</div>"
   }
 
   clone(){
@@ -37,7 +37,7 @@ class Question {
   contenuHTML(){
     var ret = "";
     for(var i=0;i<this.tab_tableReponse.length;i++){
-      ret = ret + this.tab_tableReponse[i].contenuHTML() + "<br>"
+      ret = ret + "<div class='options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'>" + this.tab_tableReponse[i].contenuHTML() + "</div><br>"
     }
     return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
@@ -59,7 +59,7 @@ class QuestionCheck extends Question {
   contenuHTML(){
     var ret = "";
     for(var i=0;i<this.tab_tableReponse.length;i++){
-      ret = ret +"<input type='checkbox'>" + this.tab_tableReponse[i].contenuHTML() + "</input><br>"
+      ret = ret +"<div class=' options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'><input type='checkbox'>" + this.tab_tableReponse[i].contenuHTML() + "</input></div><br>"
     }
     return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
@@ -81,7 +81,7 @@ class QuestionRadio extends Question {
   contenuHTML(){
     var ret = "";
     for(var i=0;i<this.tab_tableReponse.length;i++){
-      ret = ret +"<input type='radio' name='radioGroup'>" + this.tab_tableReponse[i].contenuHTML() + "</input><br>"
+      ret = ret +"<div class=' options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'><input type='radio' name='radioGroup'>" + this.tab_tableReponse[i].contenuHTML() + "</input></div><br>"
     }
     return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
