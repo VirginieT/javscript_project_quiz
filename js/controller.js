@@ -53,9 +53,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if(questionnaire.currentQuestion() instanceof QuestionRadio){
         var radios = document.getElementsByTagName('input');
         for (var i = 0; i < radios.length; i++) {
-          if (radios[i].type === 'radio' && radios[i].checked) {
-            questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
-          }
+            if (radios[i].type === 'radio' && radios[i].checked) {
+              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
+              if (questionnaire.currentReponse(i).b_valide === true) {
+                score++
+              }
+            }
         }
       }else if(questionnaire.currentQuestion() instanceof QuestionCheck){
         var radios = document.getElementsByTagName('input');
@@ -64,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
           }
         }
+        console.log(JSON.stringify(questionnaire.tab_saisiesUtilisateur))
       }else{
         questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1), i));
       }
@@ -78,7 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
       validate_btn.classList.add("hide");
       next_btn.classList.remove("hide");
     }
+    console.log(score)
   });
+
+
 
   //add next button event
   next_btn.addEventListener('click', function(){
@@ -94,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         quiz.classList.add("hide");
         end.classList.remove("hide");
       }else{
-        showNext()
+        showNext();
       }
       validate_btn.classList.remove("hide");
       next_btn.classList.add("hide");
@@ -108,11 +115,23 @@ document.addEventListener("DOMContentLoaded", () => {
     quiz.classList.add("hide");
     end.classList.add("hide");
   });
+
+  //add start quizz button event
+  quit.addEventListener('click', function(){
+    window.close()
+  });
 });
 
 function showNext(){
   //remove all valid and invalid class to hide result
   question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
+  document.querySelector('.progress').innerHTML = questionnaire.indexQuestion+"/"+questionnaire.nbQuestion;
+
+  //enable dir evt
+  var divs = document.getElementsByClassName("options")
+  for(var i=0;i<divs.length;i++){
+    divs[i].addEventListener('click', eventDivClicked);
+  }
 }
 
 function disableInput(reponsesId){
@@ -122,5 +141,18 @@ function disableInput(reponsesId){
   }
   for (var i = 0; i < reponsesId.length; i++) {
     radios[reponsesId[i]].setAttribute('checked', '');
+  }
+}
+
+function eventDivClicked(evt){
+  //TODO recup fils input et toogle le checked
+  divInput = evt.target.getElementsByTagName('input');
+  if(divInput.length >= 1){
+    //input found
+    divInput[0].toggleAttribute("checked");
+  }else{
+    //on text -> want brother
+    divInput = evt.target;
+    divInput.previousSibling.toggleAttribute("checked");
   }
 }
