@@ -14,7 +14,7 @@
 
 body{
   background-color: var(--secondColor);
-  font-family: 'Gratelos Display', 'Coolvetica', 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -25,33 +25,45 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1.5rem;
-  margin: 8rem 0rem 8rem 0;
+  padding: 2rem 3rem 1rem 3rem;
+  margin: 5rem 0rem 5rem 0;
   width: 50%;
   font-size: 1.1rem;
   border-radius: 0.3rem;
-  border: 2px solid var(--firstColor);
+  color: var(--secondColor);
+  background-color: var(--firstColor);
+  box-shadow: 7px 7px 29px rgba(0, 0, 0, 0.5);
 }
 
 .title{
   font-size: 3rem;
-  color: var(--fourthColor);
+  font-weight: bold;
+  color: var(--secondColor);
   margin: 0 auto;
-  padding-bottom: 1.5rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--secondColor);
 }
 
 .welcome{
   font-size: 1.3rem;
   margin: 0 auto;
-  padding-bottom: 1rem;
+  padding: 2rem 0 1rem;
 }
 .info{
   font-size: 1.1rem;
   padding-bottom: 1rem;
 }
+.info_last{
+  align-self: center;
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
 .start_image{
   width : 100%;
+  max-width: 400px;
   padding-bottom: 1rem;
+  margin: auto;
+  display: block;
 }
 .btn_container {
   margin: 20px 0;
@@ -63,30 +75,27 @@ body{
   float:left;
 	width: 100%;
 	max-width:500px;
-	border: white solid 4px;
+	border:  solid 4px var(--fifthColor);
 	cursor: pointer;
-	background-color: var(--fifthColor);
+	background-color: var(--firstColor);
 	margin-top: -4px;
-	color: white;
+	color: var(--fifthColor);
 	text-transform: uppercase;
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
+  font-weight: bold;
 	letter-spacing: .1em;
 	padding-top: 22px;
 	padding-bottom: 22px;
 	font-weight: 500;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	-ms-transition: all 0.3s;
 	transition: all 0.3s;
 }
 .start-text{
   margin : 0 0.5rem 0 0.5rem;
 }
 .start_btn:hover{
-  background-color:white;
-  color: var(--thirdColor);
+  background-color:var(--fifthColor);
+  color: var(--firstColor);
+  box-shadow: inset 0 0 0 20px var(--fifthColor), 0 0 20px var(--fifthColor);
 }
 
 
@@ -195,7 +204,7 @@ button.validate_btn{
 	font-size: 16px;
 	letter-spacing: .1em;
   font-weight: bold;
-  color: white;
+  color: var(--firstColor);
 }
 button.validate_btn:hover{
   background-color: var(--firstColor);
@@ -216,7 +225,7 @@ button.next_btn{
 	font-size: 16px;
 	letter-spacing: .1em;
   font-weight: bold;
-  color: white;
+  color: var(--firstColor);
 }
 button.next_btn:hover{
   background-color: var(--firstColor);
@@ -295,11 +304,14 @@ button.restart{
 	font-size: 16px;
 	letter-spacing: .1em;
   font-weight: bold;
-  color: white;
+  color: var(--firstColor);
+  transition:all .5s ease-in-out;
 }
 button.restart:hover{
   background-color: var(--firstColor);
   color: var(--fifthColor);
+  border:2px solid var(--fifthColor);
+  font-size:17px;
 }
 button.quit{
   width: 100%;
@@ -316,11 +328,14 @@ button.quit{
 	font-size: 16px;
 	letter-spacing: .1em;
   font-weight: bold;
-  color: white;
+  color: var(--firstColor);
+  transition:all .5s ease-in-out;
 }
 button.quit:hover{
   background-color: var(--firstColor);
   color: var(--fifthColor);
+  border:2px solid var(--fifthColor);
+  font-size:17px;
 }
 
 
