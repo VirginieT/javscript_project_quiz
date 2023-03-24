@@ -7,6 +7,10 @@ class Reponse {
   contenuHTML(){
     return "<p>"+this.s_intitule+"</p>"
   }
+
+  clone(){
+    return new Reponse(this.s_intitule, this.b_valide)
+  }
 }
 
 class Question {
@@ -26,6 +30,14 @@ class Question {
     }
     return "<p>--"+this.s_intitule+"--</p><br>"+ret;
   }
+
+  clone(){
+    var tabReponses = []
+    for(var i=0;i<this.tab_tableReponse.length;i++){
+      tabReponses.push(this.tab_tableReponse[i].clone());
+    }
+    return new Question(this.s_intitule,tabReponses)
+  }
 }
 
 class QuestionCheck extends Question {
@@ -40,6 +52,14 @@ class QuestionCheck extends Question {
     }
     return "<p>--"+this.s_intitule+"--</p><br>"+ret;
   }
+
+  clone(){
+    var tabReponses = []
+    for(var i=0;i<this.tab_tableReponse.length;i++){
+      tabReponses.push(this.tab_tableReponse[i].clone());
+    }
+    return new QuestionCheck(this.s_intitule,tabReponses)
+  }
 }
 
 class QuestionRadio extends Question {
@@ -53,6 +73,14 @@ class QuestionRadio extends Question {
       ret = ret +"<input type='radio' name='radioGroup'>" + this.tab_tableReponse[i].contenuHTML() + "</input><br>"
     }
     return "<p>--"+this.s_intitule+"--</p><br>"+ret;
+  }
+
+  clone(){
+    var tabReponses = []
+    for(var i=0;i<this.tab_tableReponse.length;i++){
+      tabReponses.push(this.tab_tableReponse[i].clone());
+    }
+    return new QuestionRadio(this.s_intitule,tabReponses)
   }
 }
 

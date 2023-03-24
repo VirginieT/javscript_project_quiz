@@ -50,8 +50,21 @@ document.addEventListener("DOMContentLoaded", () => {
     end.classList.add("hide");
 
     indexQuestion = 0;
+
+    var tab2 = []
+    for(var i=0;i<questionR.length;i++){
+      tab2.push(questionR[i].clone());
+    }
+    var tabQuestion = [];
+
+    for(var i=0;i<4;i++){
+      var randNum = Math.random()*tab2.length;
+      tabQuestion.push(tab2[randNum]);
+      delete tab2[randNum];
+    }
+
     // tabQuestion = ["<p>Q1</p>","<p>Q2</p>","<p><b>Q3</b></p>","<p>Q4</p>"];//to upgrade with real question since samuel file
-    tabQuestion = [questionR[2], questionR[14], questionR[8],questionR[19]]
+    //tabQuestion = [questionR[2], questionR[14], questionR[8],questionR[19]]
 
     showQuestion();
   });
