@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         quiz.classList.add("hide");
         end.classList.remove("hide");
       }else{
-        showNext()
+        showNext();
       }
       validate_btn.classList.remove("hide");
       next_btn.classList.add("hide");
@@ -118,6 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function showNext(){
   //remove all valid and invalid class to hide result
   question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
+
+  //enable dir evt
+  var divs = document.getElementsByClassName("options")
+  for(var i=0;i<divs.length;i++){
+    divs[i].addEventListener('click', eventDivClicked);
+  }
 }
 
 function disableInput(reponsesId){
@@ -127,5 +133,18 @@ function disableInput(reponsesId){
   }
   for (var i = 0; i < reponsesId.length; i++) {
     radios[reponsesId[i]].setAttribute('checked', '');
+  }
+}
+
+function eventDivClicked(evt){
+  //TODO recup fils input et toogle le checked
+  divInput = evt.target.getElementsByTagName('input');
+  if(divInput.length >= 1){
+    //input found
+    divInput[0].toggleAttribute("checked");
+  }else{
+    //on text -> want brother
+    divInput = evt.target;
+    divInput.previousSibling.toggleAttribute("checked");
   }
 }
