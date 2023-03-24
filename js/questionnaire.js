@@ -65,7 +65,7 @@ new QuestionRadio("Quel test permet de vérifier qu’une fonctionnalité est ut
         new Reponse("le test système", false),
         new Reponse("le test d'utilisabilité", true)]
 ),
-new QuestionRadio("Combien de niveaux de certification existe-t’il ?",
+new QuestionRadio("Combien de niveaux de certification ISTQB existe-t’il ?",
         [new Reponse("2", false),
         new Reponse("5", false),
         new Reponse("8", false),
