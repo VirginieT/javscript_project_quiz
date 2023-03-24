@@ -181,6 +181,21 @@ header{
 .options.invalid {
   border: 2.1px solid rgba(238, 32, 17, 0.973);
 }
+input[type="radio"], .options {
+  display: inline-block;
+}
+.options {
+  display: block;
+}
+.validate_btn{
+  width: 20%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--fourthColor);
+  margin-left: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
 
 footer{

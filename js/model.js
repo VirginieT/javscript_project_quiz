@@ -83,7 +83,7 @@ class QuestionRadio extends Question {
     for(var i=0;i<this.tab_tableReponse.length;i++){
       ret = ret +"<input type='radio' name='radioGroup'>" + this.tab_tableReponse[i].contenuHTML() + "</input><br>"
     }
-    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
+    return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
 
   clone(){
