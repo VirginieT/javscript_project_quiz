@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quiz.classList.remove("hide");
     end.classList.add("hide");
 
-    questionnaire = new Questionnaire(questionR);
+    questionnaire = new Questionnaire(questionR, 4);
     question.innerHTML = questionnaire.contenuHTML()
   });
 
