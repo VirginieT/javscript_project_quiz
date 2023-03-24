@@ -5,7 +5,7 @@ class Reponse {
   }
 
   contenuHTML(){
-    return "<div class='options'>"+this.s_intitule+"</div>"
+    return "<div class='options "+(this.b_valide ? "valid" : "invalid")+"'>"+this.s_intitule+"</div>"
   }
 
   clone(){

@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     end.classList.add("hide");
 
     questionnaire = new Questionnaire(questionR, 4);
-    question.innerHTML = questionnaire.contenuHTML()
+    showNext();
   });
 
   //add next button event
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         quiz.classList.add("hide");
         end.classList.remove("hide");
       }else{
-        question.innerHTML = questionnaire.contenuHTML()
+        showNext()
       }
     }else{
       //mémorise la réponse et affiche la correction de la question
@@ -71,3 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
     end.classList.add("hide");
   });
 });
+
+function showNext(){
+  //remove all valid and invalid class to hide result
+  question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
+}
