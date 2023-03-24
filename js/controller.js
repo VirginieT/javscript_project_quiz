@@ -39,10 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     showNext();
   });
 
-  // initialize score variable and score
-  var scoreMax = ""
-  var score = 0
-
   //add result button event
   validate_btn.addEventListener('click', function(){
     console.log("button pushed, mode answered = "+questionnaire.isAnswered());
@@ -56,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (radios[i].type === 'radio' && radios[i].checked) {
               questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i), i));
               if (questionnaire.currentReponse(i).b_valide === true) {
-                score++
+                questionnaire.score++
               }
             }
         }
@@ -69,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (compareReponse(questionnaire.currentValidReponse(), questionnaire.reponsesUtilisateur())){
           console.log('if')
-          score ++
+          questionnaire.score ++
         }
         //console.log(JSON.stringify(questionnaire.tab_saisiesUtilisateur))
 
@@ -87,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
       validate_btn.classList.add("hide");
       next_btn.classList.remove("hide");
     }
-    console.log("score = " + score)
+    console.log("score = " + questionnaire.score)
   });
 
 
@@ -131,7 +127,8 @@ function showNext(){
   //remove all valid and invalid class to hide result
   question.innerHTML = questionnaire.contenuHTML().replaceAll('invalid', '').replaceAll('valid', '')
   document.querySelector('.progress').innerHTML = questionnaire.indexQuestion+" / "+questionnaire.nbQuestion+" questions";
-
+  document.querySelector('.score').innerHTML = "score : "+questionnaire.score;
+  
   //enable dir evt
   var divs = document.getElementsByClassName("options")
   for(var i=0;i<divs.length;i++){
@@ -165,11 +162,11 @@ function eventDivClicked(evt){
 function compareReponse(ent1, ent2){
   if (ent1.length != ent2.length){
     return false
-  } 
+  }
   for (i=0; i < ent1.length; i++){
       if (ent1[i].s_intule != ent2[i].s_intule){
         return false
-    } 
+    }
   }
   return true
 }

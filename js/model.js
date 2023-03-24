@@ -98,6 +98,7 @@ class QuestionRadio extends Question {
 
 class Questionnaire {
   constructor(questionR, nbQuestion) {
+    this.score = 0
     this.tab_questions = [];
     this.tab_saisiesUtilisateur = []
     this.indexQuestion = 0;
@@ -182,7 +183,7 @@ class Questionnaire {
 
     return ret;
   }
-} 
+}
 
 
 //to test
