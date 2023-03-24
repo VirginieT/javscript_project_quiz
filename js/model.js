@@ -37,7 +37,7 @@ class Question {
   contenuHTML(){
     var ret = "";
     for(var i=0;i<this.tab_tableReponse.length;i++){
-      ret = ret + "<div class='options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'>" + this.tab_tableReponse[i].contenuHTML() + "</div><br>"
+      ret = ret + "<div id='"+i+"' class='options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'>" + this.tab_tableReponse[i].contenuHTML() + "</div><br>"
     }
     return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
@@ -59,7 +59,7 @@ class QuestionCheck extends Question {
   contenuHTML(){
     var ret = "";
     for(var i=0;i<this.tab_tableReponse.length;i++){
-      ret = ret +"<div class=' options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'><input type='checkbox'>" + this.tab_tableReponse[i].contenuHTML() + "</input></div><br>"
+      ret = ret +"<div id='"+i+"' class=' options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'><input type='checkbox'>" + this.tab_tableReponse[i].contenuHTML() + "</input></div><br>"
     }
     return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
@@ -81,9 +81,9 @@ class QuestionRadio extends Question {
   contenuHTML(){
     var ret = "";
     for(var i=0;i<this.tab_tableReponse.length;i++){
-      ret = ret +"<div class=' options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'><input type='radio' name='radioGroup'>" + this.tab_tableReponse[i].contenuHTML() + "</input></div><br>"
+      ret = ret +"<div id='"+i+"' class=' options "+(this.tab_tableReponse[i].b_valide ? "valid" : "invalid")+"'><input type='radio' name='radioGroup'>" + this.tab_tableReponse[i].contenuHTML() + "</input></div><br>"
     }
-    return "<p>--"+this.s_intitule+"--</p><br>"+ret;
+    return "<p>"+this.s_intitule+"</p><br>"+ret;
   }
 
   clone(){
@@ -100,6 +100,7 @@ class Questionnaire {
     this.tab_questions = [];
     this.tab_saisiesUtilisateur = []
     this.indexQuestion = 0;
+    this.indexQuestionsRepondues = 0;
     this.nbQuestion = nbQuestion;
 
     var tab2 = [];
@@ -128,7 +129,7 @@ class Questionnaire {
   }
 
   isAnswered(){
-    return this.indexQuestion == this.tab_saisiesUtilisateur.length - 1;
+    return this.indexQuestion == this.indexQuestionsRepondues;
   }
 
   contenuHTML(){
@@ -138,15 +139,24 @@ class Questionnaire {
   size(){
     return this.tab_questions.length;
   }
+
+  reponsesUtilisateur(){
+    var ret = [];
+    for(var i=0;i<this.tab_saisiesUtilisateur.length;i++){
+      ret.push(this.tab_saisiesUtilisateur[i].o_reponseSelected);
+    }
+
+    return ret;
+  }
 }
 
 
 //to test
 
-var tabRep = [new Reponse("1",true), new Reponse("2",false)];
-var questionCheck = new QuestionCheck("Quel est le nom de mon petit frère", tabRep);
-
-var tabRep = [new Reponse("1",true), new Reponse("2",false)];
-var questionRadio = new QuestionRadio("La Radio est-elle utile ?", tabRep);
-
-var questionnaire = new Questionnaire([questionCheck, questionRadio]);
+// var tabRep = [new Reponse("1",true), new Reponse("2",false)];
+// var questionCheck = new QuestionCheck("Quel est le nom de mon petit frère", tabRep);
+//
+// var tabRep = [new Reponse("1",true), new Reponse("2",false)];
+// var questionRadio = new QuestionRadio("La Radio est-elle utile ?", tabRep);
+//
+// var questionnaire = new Questionnaire([questionCheck, questionRadio]);

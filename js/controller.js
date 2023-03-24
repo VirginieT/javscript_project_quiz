@@ -39,16 +39,52 @@ document.addEventListener("DOMContentLoaded", () => {
     showNext();
   });
 
+<<<<<<< HEAD
   // initialize score variable and score
   var scoreMax = questionnaire.nbQuestion
   var score = 0
 
+=======
+  //add result button event
+  validate_btn.addEventListener('click', function(){
+    console.log("button pushed, mode answered = "+questionnaire.isAnswered());
+
+    if(questionnaire.isAnswered()){
+      //mémorise la réponse et affiche la correction de la question
+
+      if(questionnaire.currentQuestion() instanceof QuestionRadio){
+        var radios = document.getElementsByTagName('input');
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].type === 'radio' && radios[i].checked) {
+              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
+            }
+        }
+      }else if(questionnaire.currentQuestion() instanceof QuestionCheck){
+        var radios = document.getElementsByTagName('input');
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].type === 'checkbox' && radios[i].checked) {
+              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
+            }
+        }
+      }else{
+        questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
+      }
+
+      console.log(JSON.stringify(questionnaire.reponsesUtilisateur()))
+
+      questionnaire.indexQuestionsRepondues++;
+      question.innerHTML = questionnaire.contenuHTML();
+      validate_btn.classList.add("hide");
+      next_btn.classList.remove("hide");
+    }
+  });
+>>>>>>> main
 
   //add next button event
   next_btn.addEventListener('click', function(){
     console.log("button pushed, mode answered = "+questionnaire.isAnswered());
 
-    if(questionnaire.isAnswered()){
+    if(!questionnaire.isAnswered()){
       //affiche la question suivante
       questionnaire.indexQuestion ++;
       if(questionnaire.indexQuestion >= questionnaire.size()){
@@ -59,12 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }else{
         showNext()
       }
-    }else{
-      //mémorise la réponse et affiche la correction de la question
-
-      //TODO change index reponse
-      questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
-      question.innerHTML = questionnaire.contenuHTML();
+      validate_btn.classList.remove("hide");
+      next_btn.classList.add("hide");
     }
   });
 
