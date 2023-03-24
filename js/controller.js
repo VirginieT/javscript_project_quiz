@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   option = document.querySelector('.option');
   result = document.querySelector('.result');
   progress = document.querySelector('.progress');
+  validate_btn = document.querySelector('.validate_btn');
   next_btn = document.querySelector('.next_btn');
   end = document.querySelector('.end');
   end_image = document.querySelector('.end_image');
