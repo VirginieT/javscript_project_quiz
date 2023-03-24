@@ -44,6 +44,33 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("button pushed, mode answered = "+questionnaire.isAnswered());
 
     if(questionnaire.isAnswered()){
+      //mémorise la réponse et affiche la correction de la question
+
+      //reponses = document.getElementsByClassName('options');
+
+      if(questionnaire.currentQuestion() instanceof QuestionRadio){
+        var radios = document.getElementsByTagName('input');
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].type === 'radio' && radios[i].checked) {
+              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
+            }
+        }
+      }else if(questionnaire.currentQuestion() instanceof QuestionCheck){
+        var radios = document.getElementsByTagName('input');
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].type === 'checkbox' && radios[i].checked) {
+              questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(i)));
+            }
+        }
+      }else{
+        questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
+      }
+
+      console.log(JSON.stringify(questionnaire.reponsesUtilisateur()))
+
+      questionnaire.indexQuestionsRepondues++;
+      question.innerHTML = questionnaire.contenuHTML();
+    }else{
       //affiche la question suivante
       questionnaire.indexQuestion ++;
       if(questionnaire.indexQuestion >= questionnaire.size()){
@@ -54,12 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }else{
         showNext()
       }
-    }else{
-      //mémorise la réponse et affiche la correction de la question
-
-      //TODO change index reponse
-      questionnaire.tab_saisiesUtilisateur.push(new SaisieUtilisateur(questionnaire.currentQuestion(), questionnaire.currentReponse(1)));
-      question.innerHTML = questionnaire.contenuHTML();
     }
   });
 
