@@ -39,6 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
     showNext();
   });
 
+<<<<<<< HEAD
+  // initialize score variable and score
+  var scoreMax = questionnaire.nbQuestion
+  var score = 0
+
+=======
   //add result button event
   validate_btn.addEventListener('click', function(){
     console.log("button pushed, mode answered = "+questionnaire.isAnswered());
@@ -72,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       next_btn.classList.remove("hide");
     }
   });
+>>>>>>> main
 
   //add next button event
   next_btn.addEventListener('click', function(){
