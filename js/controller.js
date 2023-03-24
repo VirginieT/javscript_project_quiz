@@ -39,14 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
     showNext();
   });
 
-  //add next button event
-  next_btn.addEventListener('click', function(){
+  //add result button event
+  validate_btn.addEventListener('click', function(){
     console.log("button pushed, mode answered = "+questionnaire.isAnswered());
 
     if(questionnaire.isAnswered()){
       //mémorise la réponse et affiche la correction de la question
-
-      //reponses = document.getElementsByClassName('options');
 
       if(questionnaire.currentQuestion() instanceof QuestionRadio){
         var radios = document.getElementsByTagName('input');
@@ -70,7 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       questionnaire.indexQuestionsRepondues++;
       question.innerHTML = questionnaire.contenuHTML();
-    }else{
+      validate_btn.classList.add("hide");
+      next_btn.classList.remove("hide");
+    }
+  });
+
+  //add next button event
+  next_btn.addEventListener('click', function(){
+    console.log("button pushed, mode answered = "+questionnaire.isAnswered());
+
+    if(!questionnaire.isAnswered()){
       //affiche la question suivante
       questionnaire.indexQuestion ++;
       if(questionnaire.indexQuestion >= questionnaire.size()){
@@ -81,6 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }else{
         showNext()
       }
+      validate_btn.classList.remove("hide");
+      next_btn.classList.add("hide");
     }
   });
 
