@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         quiz.classList.add("hide");
         end.classList.remove("hide");
 
-        document.querySelector('.end_info').innerHTML = "Félicitations! Tu as terminé le quiz ! Ton score final est "+questionnaire.score+" bonnes réponses";
+        document.querySelector('.end_info').innerHTML = "Félicitations! Tu as terminé le quiz ! Ton score final est "+questionnaire.score+" bonnes réponses !";
       }else{
         showNext();
       }
