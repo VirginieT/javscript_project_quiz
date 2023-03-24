@@ -108,6 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
     quiz.classList.add("hide");
     end.classList.add("hide");
   });
+
+  //add start quizz button event
+  quit.addEventListener('click', function(){
+    window.close()
+  });
 });
 
 function showNext(){
